@@ -1,0 +1,40 @@
+:root{--bg:#f3f5f7;--card:#fff;--ink:#14212b;--mut:#5d6b78;--line:#dde3e8;--acc:#0a6c8a;--ok:#1a8f4d;--bad:#c23a2b;--wrn:#b87400;
+--mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace}
+@media(prefers-color-scheme:dark){:root{--bg:#10171d;--card:#18222b;--ink:#e4ebf0;--mut:#8b9aa7;--line:#2a3743;--acc:#4cb8d8;--ok:#43c37b;--bad:#ff7a6b;--wrn:#e6a93a}}
+*{box-sizing:border-box}[hidden]{display:none!important}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem 1.5rem;padding:.6rem 1rem;background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+.brand{display:flex;align-items:center;gap:.5rem;font-size:1.05rem}.brand small{color:var(--mut);font-family:var(--mono)}
+.dot{width:.7rem;height:.7rem;border-radius:50%;background:var(--mut)}.dot.ok{background:var(--ok)}.dot.bad{background:var(--bad)}
+nav{display:flex;gap:.25rem}nav button{background:none;border:0;padding:.4rem .8rem;border-radius:6px;color:var(--mut);font:inherit;cursor:pointer}
+nav button.on{background:color-mix(in srgb,var(--acc) 14%,transparent);color:var(--acc);font-weight:600}
+main{padding:1rem;max-width:1200px;margin:auto}
+.grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fill,minmax(340px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.8rem 1rem;overflow-x:auto}
+.card.wide{grid-column:1/-1}
+h2{font-size:.78rem;text-transform:uppercase;letter-spacing:.07em;color:var(--mut);margin:0 0 .5rem}
+h3{font-size:.8rem;margin:.7rem 0 .25rem;color:var(--acc)}
+dl{display:grid;grid-template-columns:minmax(7rem,auto) 1fr;gap:.15rem .9rem;margin:0}
+dt{color:var(--mut)}dd{margin:0;font-family:var(--mono);word-break:break-word}
+table{border-collapse:collapse;width:100%;font-family:var(--mono);font-size:.82rem}
+th,td{text-align:right;padding:.2rem .5rem;border-bottom:1px solid var(--line);white-space:nowrap}
+th{color:var(--mut);font-weight:500}th:first-child,td:first-child{text-align:left}
+.y{color:var(--ok)}.n{color:var(--mut)}.e{color:var(--bad)}
+.warnbox{grid-column:1/-1;background:color-mix(in srgb,var(--wrn) 16%,var(--card));border-color:var(--wrn)}.warnbox div{padding:.1rem 0}.upd{color:var(--mut);font-family:var(--mono);margin-left:auto}
+fieldset{border:1px solid var(--line);border-radius:8px;background:var(--card);margin:0 0 1rem;padding:.4rem 1rem .9rem}
+legend{padding:0 .4rem;font-weight:600;color:var(--acc)}
+.row{display:grid;grid-template-columns:minmax(9rem,14rem) 1fr;gap:.3rem .8rem;align-items:center;margin:.35rem 0}
+.row label{color:var(--mut)}.row small{grid-column:2;color:var(--mut)}
+input,select{font:inherit;padding:.35rem .5rem;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink);width:100%;max-width:26rem}
+input[type=checkbox]{width:auto;accent-color:var(--acc)}
+.checks{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:.2rem .8rem}
+.checks label{display:flex;gap:.4rem;align-items:center}
+button{font:inherit;padding:.4rem .9rem;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--ink);cursor:pointer}
+button.primary{background:var(--acc);border-color:var(--acc);color:#fff}button.warn{border-color:var(--wrn);color:var(--wrn)}button.danger{border-color:var(--bad);color:var(--bad)}
+.bar{display:flex;flex-wrap:wrap;gap:.5rem;position:sticky;bottom:0;background:var(--bg);padding:.6rem 0}.sp{flex:1}
+#msg,#upmsg{min-height:1.4em;font-weight:600}.ok{color:var(--ok)}.bad{color:var(--bad)}
+progress{width:100%;margin-top:.6rem}
+.cmdrow{display:flex;gap:.5rem}.cmdrow input{max-width:none;flex:1;font-family:var(--mono)}
+.quick{display:flex;flex-wrap:wrap;gap:.4rem;margin:.6rem 0}.mono{font-family:var(--mono);font-size:.85rem;word-break:break-all}.mono div{padding:.15rem 0;border-bottom:1px solid var(--line)}
+code{font-family:var(--mono)}
+@media(max-width:560px){.row{grid-template-columns:1fr}.row small{grid-column:1}.grid{grid-template-columns:1fr}}

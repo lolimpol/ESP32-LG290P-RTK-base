@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RTK Base</title><link rel="stylesheet" href="/style.css">
+</head><body>
+<header>
+  <div class="brand"><span class="dot" id="dot"></span><b>RTK Base</b><small id="fwv"></small></div>
+  <small id="upd" class="upd"></small>
+  <nav id="tabs"><button data-t="dash" class="on">Dashboard</button><button data-t="cfg">Settings</button><button data-t="rx">Receiver</button><button data-t="fwp">Firmware</button></nav>
+</header>
+<main>
+  <section id="dash" class="grid"></section>
+  <section id="cfg" hidden>
+    <form id="f" onsubmit="return false"></form>
+    <div class="bar">
+      <button id="bApply">Apply</button><button id="bSave" class="primary">Apply &amp; Save</button>
+      <button id="bReload">Reload</button><span class="sp"></span>
+      <button id="bRestart" class="warn">Restart</button><button id="bFactory" class="danger">Factory reset</button>
+    </div>
+    <p id="msg" role="status"></p>
+  </section>
+  <section id="rx" hidden>
+    <div class="card"><h2>LG290P command channel</h2>
+      <p id="rxinfo" class="n"></p>
+      <p>Type the part between <code>$</code> and <code>*</code>; the checksum is added for you. Only Quectel <code>PQTM…</code> commands are accepted. Changes are lost at power-off unless you also send <code>PQTMSAVEPAR</code>; Quectel recommends restarting the receiver afterwards.</p>
+      <div class="cmdrow"><input id="cmd" value="PQTMCFGMSGRATE,W,RMC,1" spellcheck="false" autocomplete="off" autocapitalize="off"><button id="bSend" class="primary">Send</button></div>
+      <div class="quick" id="quick"></div>
+      <p id="cmdmsg" role="status"></p>
+      <h3>Receiver replies (newest first)</h3><div id="replies" class="mono"></div>
+      <p class="n">Careful: <code>PQTMCFGPROT</code> / <code>PQTMCFGUART</code> can disable NMEA input or change the baud rate and cut this link. If you change the receiver's baud rate, change the GNSS UART baud rate in Settings to match.</p>
+    </div>
+  </section>
+  <section id="fwp" hidden>
+    <div class="card"><h2>Firmware update (OTA)</h2>
+      <p>Upload the application image (<code>firmware.bin</code>) built by PlatformIO / Arduino "Export compiled binary". The new image is written to the inactive slot and only activated after it validates; the device then restarts. RTCM output pauses for a few seconds.</p>
+      <input type="file" id="file" accept=".bin"><button id="bUp" class="primary">Upload</button>
+      <progress id="prog" max="100" value="0" hidden></progress><p id="upmsg" role="status"></p>
+    </div>
+  </section>
+</main>
+<script src="/app.js"></script>
+</body></html>
